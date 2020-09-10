@@ -24,11 +24,11 @@
         <div class="time-input">
           <div class="minutes-input">
             <p>Minutes</p>
-            <input type="number" id="minutes">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" type="number" id="minutes">
           </div>
           <div class="seconds-input">
             <p>Seconds</p>
-            <input type="number" id="seconds">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" type="number" id="seconds">
           </div>
         </div>
       <div class="button-position">
