@@ -251,3 +251,26 @@ main {
   color: #FD8078;
   border-color: #FD8078;
 }
+
+.white {
+  outline: none;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  
+}
+
+#minutes {
+  outline: none;
+  color: #FFFFFF;
+}
+
+#seconds {
+  outline: none;
+  color: #FFFFFF;
+}
+
+#accomplish {
+  outline: none;
+  color: #FFFFFF;
+}
+
