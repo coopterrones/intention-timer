@@ -1,17 +1,19 @@
-var buttonStudy = document.getElementById("study");
-var iconStudy = document.querySelector("#study-icon");
-var buttonMeditate = document.getElementById("meditate");
-var iconMeditate = document.querySelector("#meditate-icon");
-var buttonExercise = document.getElementById("exercise");
-var iconExercise = document.querySelector("#exercise-icon");
+var buttonStudy = document.getElementById("study-button");
+var iconStudy = document.querySelector("#study");
+var buttonMeditate = document.getElementById("meditate-button");
+var iconMeditate = document.querySelector("#meditate");
+var buttonExercise = document.getElementById("exercise-button");
+var iconExercise = document.querySelector("#exercise");
 var activityButton = document.querySelector(".start-activity");
 var minutesInput = document.querySelector("#minutes");
 var secondsInput = document.querySelector("#seconds");
 var accomplishInput = document.querySelector("#accomplish");
 var buttonWrap = document.querySelector(".category-buttons");
 
-minutesInput.addEventListener('keyup', inputValidate);
-secondsInput.addEventListener('keyup', secondsValidate);
+var savedActivities = [];
+activityButton.addEventListener('click', newInstance);
+
+var categorySelected
 
 
 buttonWrap.addEventListener("click", function(event) {
@@ -23,6 +25,7 @@ buttonWrap.addEventListener("click", function(event) {
     iconExercise.src="./assets/exercise.svg";
     buttonStudy.classList.add("study-color");
     iconStudy.src="./assets/study-active.svg";
+    categorySelected = event.target.value;
   }
   else if (event.target.className.includes("meditate-select")) {
     buttonMeditate.classList.remove("white");
@@ -32,6 +35,7 @@ buttonWrap.addEventListener("click", function(event) {
     iconExercise.src="./assets/exercise.svg";
     buttonMeditate.classList.add("meditate-color");
     iconMeditate.src="./assets/meditate-active.svg";
+    categorySelected = event.target.value;
   }
   else if (event.target.className.includes("exercise-select")) {
     buttonExercise.classList.remove("white");
@@ -41,6 +45,16 @@ buttonWrap.addEventListener("click", function(event) {
     iconStudy.src="./assets/study.svg";
     iconExercise.src="./assets/exercise-active.svg"
     iconMeditate.src="./assets/meditate.svg"
-
+    categorySelected = event.target.value;
   }
 });
+
+function newInstance() {
+  var newActivity = new Activity (
+    categorySelected,
+    accomplishInput.value,
+    minutesInput.value, 
+    secondsInput.value,
+  )
+  savedActivities.push(newActivity)
+}

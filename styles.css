@@ -50,7 +50,7 @@ body {
   flex-direction: column;
 }
 
-#study-icon {
+#study {
   height: 35px;
   width: 35px;
 }
@@ -70,7 +70,7 @@ body {
   padding: 8px 34px;
 }
 
-#meditate-icon {
+#meditate {
   height: 35px;
   width: 35px;
 }
@@ -90,7 +90,7 @@ body {
   padding: 8px 34px;
 }
 
-#exercise-icon {
+#exercise {
   height: 35px;
   width: 35px;
 }
