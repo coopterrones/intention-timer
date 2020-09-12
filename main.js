@@ -9,14 +9,14 @@ var minutesInput = document.querySelector("#minutes");
 var secondsInput = document.querySelector("#seconds");
 var accomplishInput = document.querySelector("#accomplish");
 var buttonWrap = document.querySelector(".category-buttons");
-
+var categorySelected;
 var savedActivities = [];
+
 activityButton.addEventListener('click', newInstance);
+buttonWrap.addEventListener("click", buttonState);
+buttonWrap.addEventListener("click", setCategory);
 
-var categorySelected
-
-
-buttonWrap.addEventListener("click", function(event) {
+  function buttonState(event) {
   if (event.target.className.includes("study-select")) {
     buttonStudy.classList.remove("white");
     buttonMeditate.classList.add("white");
@@ -25,7 +25,6 @@ buttonWrap.addEventListener("click", function(event) {
     iconExercise.src="./assets/exercise.svg";
     buttonStudy.classList.add("study-color");
     iconStudy.src="./assets/study-active.svg";
-    categorySelected = event.target.value;
   }
   else if (event.target.className.includes("meditate-select")) {
     buttonMeditate.classList.remove("white");
@@ -35,7 +34,6 @@ buttonWrap.addEventListener("click", function(event) {
     iconExercise.src="./assets/exercise.svg";
     buttonMeditate.classList.add("meditate-color");
     iconMeditate.src="./assets/meditate-active.svg";
-    categorySelected = event.target.value;
   }
   else if (event.target.className.includes("exercise-select")) {
     buttonExercise.classList.remove("white");
@@ -43,18 +41,29 @@ buttonWrap.addEventListener("click", function(event) {
     buttonMeditate.classList.add("white");
     buttonStudy.classList.add("white");
     iconStudy.src="./assets/study.svg";
-    iconExercise.src="./assets/exercise-active.svg"
-    iconMeditate.src="./assets/meditate.svg"
-    categorySelected = event.target.value;
+    iconExercise.src="./assets/exercise-active.svg";
+    iconMeditate.src="./assets/meditate.svg";
   }
-});
+};
+
+function setCategory(event) {
+  if (event.target.className.includes("study-select") || event.target.id === "study") {
+    categorySelected = "Study"
+  } else if (event.target.className.includes("meditate-select") || event.target.id === "meditate") {
+    categorySelected = "Meditate"
+  } else if (event.target.className.includes("exercise-select") || event.target.id === "exercise") {
+    categorySelected = "Exercise"
+  }
+}
 
 function newInstance() {
   var newActivity = new Activity (
     categorySelected,
     accomplishInput.value,
-    minutesInput.value, 
+    minutesInput.value,
     secondsInput.value,
+    false,
+    savedActivities.length
   )
   savedActivities.push(newActivity)
 }
