@@ -11,13 +11,16 @@ var accomplishInput = document.querySelector("#accomplish");
 var buttonWrap = document.querySelector(".category-buttons");
 var hideForm = document.querySelector(".new-activity");
 var activityTimer = document.querySelector(".current-activity-box")
-var startButton = document.querySelector(".start-button")
-var categorySelected;
+var startButton = document.querySelector(".start-button");
+var inputFields = document.querySelectorAll("input");
+var accomplishError = document.querySelector(".accomplish-input-error");
+var minutesError = document.querySelector(".minutes-input-error");
+var secondsError = document.querySelector(".seconds-input-error");
+var activityError = document.querySelector(".activity-input-error");
 var savedActivities = [];
 
-
-activityButton.addEventListener('click', removeForm);
-activityButton.addEventListener('click', newInstance);
+    
+activityButton.addEventListener('click', dataValidate);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
 
@@ -81,4 +84,33 @@ function newInstance() {
 function removeForm() {
   hideForm.classList.add("hidden");
   activityTimer.classList.remove("hidden");
+}  
+
+function dataValidate() {
+  if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
+    removeForm();
+    newInstance();
+  } else {
+    for( var i = 0; i < inputFields.length; i++) {
+      if (inputFields[0].value.length === 0) {
+        accomplishError.classList.remove("hidden");
+      }
+      if (inputFields[1].value.length === 0) {
+        minutesError.classList.remove("hidden");
+      }
+      if(inputFields[2].value.length === 0) {
+        secondsError.classList.remove("hidden");
+      }
+    }  
+    if(!categorySelected) {
+      activityError.classList.remove("hidden");
+    }
+  }
+  // for( var i = 0; i < inputFields.length; i++) {
+  //   if (inputFields[i].value.length == 0) {
+  //     activityButton.disabled = true;
+  //   } else if (inputFields[0].value.length > 0 && inputFields[1].value.length > 0 && inputFields[2].value.length > 0) {
+  //     activityButton.disabled = false;
+  
 }
+

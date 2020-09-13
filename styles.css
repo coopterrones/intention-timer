@@ -343,7 +343,25 @@ main {
   margin-top: 35px;
 }
 
+.activity-icon,
+.accomplish-icon,
+.minutes-icon,
+.seconds-icon {
+  height: 19px;
+  width: 10px
+  display: flex;
+  flex-direction: row;
+  color: #EFB7EC;
+}
 
+.activity-input-error,
+.minutes-input-error,
+.seconds-input-error,
+.accomplish-input-error {
+  color: #EFB7EC;
+  font-size: 16px;
+  margin-top: 6px;
+}
 
 
 -
