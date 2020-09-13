@@ -276,3 +276,74 @@ main {
   outline: none;
   color: #FFFFFF;
 }
+
+.hidden {
+  display: none;
+}
+
+.start-button-green {
+  font-family: Montserrat;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border-style: solid;
+  border-color:#B3FD78;
+}
+
+.start-button-purple {
+  font-family: Montserrat;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border-style: solid;
+  border-color:#C278FD;
+}
+
+.start-button-red {
+  font-family: Montserrat;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border-style: solid;
+  border-color:#FD8078;
+
+}
+.time {
+  font-family: Montserrat;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 60px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -10px;
+}
+
+.timer-header {
+  font-family: Montserrat;
+  color: #FFFFFF;
+  margin-bottom: 0;
+
+}
+
+.timer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+
+}
+
+.start-button {
+  margin-top: 35px;
+}
+
+
+
+
+-

@@ -9,12 +9,19 @@ var minutesInput = document.querySelector("#minutes");
 var secondsInput = document.querySelector("#seconds");
 var accomplishInput = document.querySelector("#accomplish");
 var buttonWrap = document.querySelector(".category-buttons");
+var hideForm = document.querySelector(".new-activity");
+var activityTimer = document.querySelector(".current-activity-box")
+var startButton = document.querySelector(".start-button")
 var categorySelected;
 var savedActivities = [];
 
+
+activityButton.addEventListener('click', removeForm);
 activityButton.addEventListener('click', newInstance);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
+
+
 
   function buttonState(event) {
   if (event.target.className.includes("study-select")) {
@@ -49,10 +56,13 @@ buttonWrap.addEventListener("click", setCategory);
 function setCategory(event) {
   if (event.target.className.includes("study-select") || event.target.id === "study") {
     categorySelected = "Study"
+    startButton.classList.add("start-button-green")
   } else if (event.target.className.includes("meditate-select") || event.target.id === "meditate") {
     categorySelected = "Meditate"
+    startButton.classList.add("start-button-purple")
   } else if (event.target.className.includes("exercise-select") || event.target.id === "exercise") {
     categorySelected = "Exercise"
+    startButton.classList.add("start-button-red")
   }
 }
 
@@ -66,4 +76,9 @@ function newInstance() {
     savedActivities.length
   )
   savedActivities.push(newActivity)
+}
+
+function removeForm() {
+  hideForm.classList.add("hidden");
+  activityTimer.classList.remove("hidden");
 }
