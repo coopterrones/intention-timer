@@ -344,6 +344,23 @@ main {
 }
 
 
+.accomplish-icon,
+.minutes-icon,
+.seconds-icon {
+  height: 19px;
+  width: 10px
+  display: flex;
+  flex-direction: row;
+  color: #EFB7EC;
+}
+
+.minutes-input-error,
+.seconds-input-error,
+.accomplish-input-error {
+  color: #EFB7EC;
+  font-size: 16px;
+  margin-top: 6px;
+}
 
 
 -
