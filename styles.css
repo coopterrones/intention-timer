@@ -194,7 +194,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%;
+  height: 70%;
   border-radius: 3px;
   margin-left: 20px;
   margin-right: 20px;
@@ -335,8 +335,6 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  
-
 }
 
 .start-button {
@@ -363,5 +361,6 @@ main {
   margin-top: 6px;
 }
 
-
--
+.current-activity-box {
+  width: 75%
+}
