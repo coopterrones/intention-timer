@@ -8,6 +8,15 @@
     <header>
       <p class="header-title">INTENTION TIMER</p>
     </header>
+    <div class="current-activity-box hidden">
+      <h1 class="new-activity-header">Current Activity</h1>
+      <div class="grey-box timer">
+        <h2 class="timer-header">Text</h2>
+        <div  class="time"> <span>05:00</span>
+      </div>
+        <button class="start-button" value="start">START</button>
+      </div>
+    </div>
     <section class="new-activity">
       <h1 class="new-activity-header">New Activity</h1>
       <div class="grey-box">
@@ -24,11 +33,11 @@
         <div class="time-input">
           <div class="minutes-input">
             <p>Minutes</p>
-            <input onkeyup="value=value.replace(/[^\d]/g,'')" type="number" id="minutes">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" min= "1" max="90" type="number" id="minutes">
           </div>
           <div class="seconds-input">
             <p>Seconds</p>
-            <input onkeyup="value=value.replace(/[^\d]/g,'')" type="number" id="seconds">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" min="1" max="59" type="number" id="seconds">
           </div>
         </div>
       <div class="button-position">
