@@ -16,7 +16,7 @@ var inputFields = document.querySelectorAll("input");
 var accomplishError = document.querySelector(".accomplish-input-error");
 var minutesError = document.querySelector(".minutes-input-error");
 var secondsError = document.querySelector(".seconds-input-error");
-var categorySelected = "";
+var activityError = document.querySelector(".activity-input-error");
 var savedActivities = [];
 
     
@@ -60,7 +60,6 @@ function setCategory(event) {
   if (event.target.className.includes("study-select") || event.target.id === "study") {
     categorySelected = "Study"
     startButton.classList.add("start-button-green")
-    console.log("test3");
   } else if (event.target.className.includes("meditate-select") || event.target.id === "meditate") {
     categorySelected = "Meditate"
     startButton.classList.add("start-button-purple")
@@ -83,27 +82,17 @@ function newInstance() {
 }
 
 function removeForm() {
-  debugger
   hideForm.classList.add("hidden");
   activityTimer.classList.remove("hidden");
-}   
+}  
 
-
-  
 function dataValidate() {
-  console.log("test");
-  activityButton.disabled = false;
-  console.log(activityButton.disabled);
   if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
-    // activityButton.disabled = false;
-    console.log("form valid")
     removeForm();
     newInstance();
   } else {
-    // activityButton.disabled = true;
     for( var i = 0; i < inputFields.length; i++) {
       if (inputFields[0].value.length === 0) {
-        console.log("test");
         accomplishError.classList.remove("hidden");
       }
       if (inputFields[1].value.length === 0) {
@@ -114,7 +103,7 @@ function dataValidate() {
       }
     }  
     if(!categorySelected) {
-      console.log("error")
+      activityError.classList.remove("hidden");
     }
   }
   // for( var i = 0; i < inputFields.length; i++) {

@@ -343,7 +343,7 @@ main {
   margin-top: 35px;
 }
 
-
+.activity-icon,
 .accomplish-icon,
 .minutes-icon,
 .seconds-icon {
@@ -354,6 +354,7 @@ main {
   color: #EFB7EC;
 }
 
+.activity-input-error,
 .minutes-input-error,
 .seconds-input-error,
 .accomplish-input-error {
