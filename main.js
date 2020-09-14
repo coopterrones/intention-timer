@@ -17,13 +17,16 @@ var accomplishError = document.querySelector(".accomplish-input-error");
 var minutesError = document.querySelector(".minutes-input-error");
 var secondsError = document.querySelector(".seconds-input-error");
 var activityError = document.querySelector(".activity-input-error");
+var startTimer = document.querySelector("h2")
+var countdownTime = document.querySelector(".time")
+var categorySelected = ""
 var savedActivities = [];
 
-    
+
 activityButton.addEventListener('click', dataValidate);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
-
+startButton.addEventListener("click",startCountdown);
 
 
   function buttonState(event) {
@@ -84,12 +87,14 @@ function newInstance() {
 function removeForm() {
   hideForm.classList.add("hidden");
   activityTimer.classList.remove("hidden");
-}  
+}
 
 function dataValidate() {
   if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
     removeForm();
     newInstance();
+    startTimer.innerText = accomplishInput.value;
+    displayNewTime();
   } else {
     for( var i = 0; i < inputFields.length; i++) {
       if (inputFields[0].value.length === 0) {
@@ -101,7 +106,7 @@ function dataValidate() {
       if(inputFields[2].value.length === 0) {
         secondsError.classList.remove("hidden");
       }
-    }  
+    }
     if(!categorySelected) {
       activityError.classList.remove("hidden");
     }
@@ -110,7 +115,25 @@ function dataValidate() {
   //   if (inputFields[i].value.length == 0) {
   //     activityButton.disabled = true;
   //   } else if (inputFields[0].value.length > 0 && inputFields[1].value.length > 0 && inputFields[2].value.length > 0) {
-  //     activityButton.disabled = false;
-  
+  //     activityButton.disabled = false
 }
 
+function displayNewTime() {
+  var collectTime = `${minutesInput.value} : ${secondsInput.value}`
+    countdownTime.innerHTML = collectTime
+}
+ displayNewTime()
+
+function startCountdown() {
+
+}
+
+// function startCountdown() {
+//   var minutes = Math.floor(time / 60)
+//   var seconds = time % 60
+//   countdownTime.innerHTML = `${minutes} : ${seconds}`;
+//   time --
+// }
+
+
+//
