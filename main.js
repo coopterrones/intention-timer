@@ -28,6 +28,7 @@ activityButton.addEventListener('click', dataValidate);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
 startButton.addEventListener("click", timerCountdown);
+activityButton.addEventListener("mouseover", timeLimits);
 
 
   function buttonState(event) {
@@ -114,6 +115,16 @@ function dataValidate() {
   }
 }
 
+function timeLimits() {
+  if (minutesInput.value >= 90) {
+    secondsInput.value = 0
+    minutesInput.value = 90;
+  }
+  if (secondsInput.value >= 59) {
+    secondsInput.value = 59;
+  }
+}
+
 function displayTime() {
   if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
   if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
@@ -121,6 +132,7 @@ function displayTime() {
 }
 
 function timerCountdown() {
+  startButton.disabled = true;
   timeDisplay.classList.add("hidden");
   var totalSeconds = Number((minutesInput.value) * 60) + Number(secondsInput.value);
   var interval = setInterval(countdown, 1000)

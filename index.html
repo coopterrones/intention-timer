@@ -36,12 +36,12 @@
         <div class="time-input">
           <div class="minutes-input">
             <p>Minutes</p>
-            <input onkeyup="value=value.replace(/[^\d]/g,'')" min= "1" max="90" type="number" id="minutes">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" min= "1" max="90" type="number" id="minutes" placeholder="Max value is 90 minutes">
             <span class="minutes-input-error hidden"><img class="minutes-icon" src="./assets/warning.svg">  Minutes are required.</span>
           </div>
           <div class="seconds-input">
             <p>Seconds</p>
-            <input onkeyup="value=value.replace(/[^\d]/g,'')" min="1" max="59" type="number" id="seconds">
+            <input onkeyup="value=value.replace(/[^\d]/g,'')" min="1" max="59" type="number" id="seconds" placeholder="Max value is 59 seconds">
             <span class="seconds-input-error hidden"><img class="seconds-icon" src="./assets/warning.svg"> Seconds are required.</span>
           </div>
         </div>
