@@ -19,6 +19,7 @@ var secondsError = document.querySelector(".seconds-input-error");
 var activityError = document.querySelector(".activity-input-error");
 var startTimer = document.querySelector("h2");
 var countdownTime = document.querySelector(".time");
+var timeDisplay = document.querySelector("#start-time");
 var categorySelected = "";
 var savedActivities = [];
 
@@ -26,7 +27,7 @@ var savedActivities = [];
 activityButton.addEventListener('click', dataValidate);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
-startButton.addEventListener("click",timerCountdown);
+startButton.addEventListener("click", timerCountdown);
 
 
   function buttonState(event) {
@@ -81,12 +82,13 @@ function newInstance() {
     false,
     savedActivities.length
   )
-  savedActivities.push(newActivity)
+  savedActivities.push(newActivity);
 }
 
 function removeForm() {
   hideForm.classList.add("hidden");
   activityTimer.classList.remove("hidden");
+  displayTime();
 }
 
 function dataValidate() {
@@ -112,10 +114,21 @@ function dataValidate() {
   }
 }
 
+function displayTime() {
+  if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
+  if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
+  timeDisplay.innerText = `${minutesInput.value}:${secondsInput.value}`;
+}
+
 function timerCountdown() {
+  timeDisplay.classList.add("hidden");
   var totalSeconds = Number((minutesInput.value) * 60) + Number(secondsInput.value);
-  setInterval(countdown, 1000)
+  var interval = setInterval(countdown, 1000)
     function countdown() {
+      if (totalSeconds <= -1) {
+        clearInterval(interval);
+        alert("This activity is complete!");
+      } else if (totalSeconds >= 0) {
       var minute = Math.floor(totalSeconds / 60);
       var second = totalSeconds % 60;
       if (minute < 10) {minute = `0${minute}`};
@@ -123,4 +136,6 @@ function timerCountdown() {
       totalSeconds--;
       countdownTime.innerText = `${minute}:${second}`;
     }
+  }
 }
+
