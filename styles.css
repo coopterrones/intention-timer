@@ -220,6 +220,10 @@ body {
 
 .past-activities {
   width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 main {
@@ -379,6 +383,7 @@ main {
 }
 .activity-card {
   background-color: #46424D;
+  margin: 10px;
   width: 90%;
   height: 12%;
   color: #FFF;
@@ -388,12 +393,34 @@ main {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
+.create-new-activity {
+  margin-top: 60px;
+  padding: 9px 45px;
+  color: gray;
+  border-radius: 3px;
+  border-style: none;
+}
+
 .card-header {
   margin-top: 1px;
   margin-bottom: 2px;
   padding-top: 9px;
   font-weight: 400;
   font-size: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.color-indicator {
+  margin-right: 10px;
+  margin-top: 10px;
+  height: 27px;
+  width: 4px;
+  border-radius: 3px;
 }
 
 .card-time {

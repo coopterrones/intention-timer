@@ -23,15 +23,17 @@ var logActivityButton = document.querySelector(".log-activity");
 var cardDisplay = document.querySelector(".activity-cards");
 var pastActivitiesPrompt = document.querySelector(".past-activities-prompt");
 var createNewActivityButton = document.querySelector(".create-new-activity");
+var inputs = document.querySelectorAll(".input");
+var indicatorColor;
 var categorySelected = "";
 var savedActivities = [];
 
 
 activityButton.addEventListener('click', dataValidate);
+activityButton.addEventListener("mouseover", timeLimits);
 buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
 startButton.addEventListener("click", timerCountdown);
-activityButton.addEventListener("mouseover", timeLimits);
 logActivityButton.addEventListener("click", saveActivity);
 createNewActivityButton.addEventListener("click", displayForm);
 
@@ -68,12 +70,15 @@ createNewActivityButton.addEventListener("click", displayForm);
 
 function setCategory(event) {
   if (event.target.className.includes("study-select") || event.target.id === "study") {
+    indicatorColor = "#B3FD78"
     categorySelected = "Study"
     startButton.classList.add("start-button-green")
   } else if (event.target.className.includes("meditate-select") || event.target.id === "meditate") {
+    indicatorColor = "#C278FD"
     categorySelected = "Meditate"
     startButton.classList.add("start-button-purple")
   } else if (event.target.className.includes("exercise-select") || event.target.id === "exercise") {
+    indicatorColor = "#FD8078"
     categorySelected = "Exercise"
     startButton.classList.add("start-button-red")
   }
@@ -85,6 +90,7 @@ function newInstance() {
     accomplishInput.value,
     minutesInput.value,
     secondsInput.value,
+    indicatorColor,
     false,
     savedActivities.length
   )
@@ -98,6 +104,12 @@ function removeForm() {
 }
 
 function dataValidate() {
+  startButton.disabled = false;
+  startButton.innerText = "START";
+  createNewActivityButton.classList.add("hidden");
+  startButton.classList.remove("hidden");
+  startTimer.classList.remove("hidden");
+  countdownTime.classList.remove("hidden");
   if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
     removeForm();
     newInstance();
@@ -131,6 +143,7 @@ function timeLimits() {
 }
 
 function displayTime() {
+  activityTimer.classList.remove("hidden");
   if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
   if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
   countdownTime.innerText = `${minutesInput.value}:${secondsInput.value}`;
@@ -169,16 +182,40 @@ function saveActivity() {
   createNewActivityButton.classList.remove("hidden");
   var activityCards = "";
   for (var i = 0; i < savedActivities.length; i++) {
-    activityCards = 
+    activityCards =
     `<div class="activity-card">
     <div class="card">
+    <div>
     <h5 class="card-header">${savedActivities[i].category}</h5>
     <p class="card-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
-    </div>
     <p class="card-description">${savedActivities[i].description}</p>
+    </div>
+    <div class="color-indicator" style= "background-color: ${savedActivities[i].color}">
+    </div>
+    </div>
      </div>
     `
-    cardDisplay.innerHTML = activityCards
   }
+  cardDisplay.insertAdjacentHTML("afterend", activityCards);
 }
+ function displayForm() {
+   hideForm.classList.remove("hidden");
+   activityTimer.classList.add("hidden")
+   clearInputs()
+   clearButtons()
+ }
 
+ function clearInputs() {
+   for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = ""
+   }
+ }
+
+ function clearButtons() {
+   iconStudy.src="./assets/study.svg";
+   iconMeditate.src="./assets/meditate.svg";
+   iconExercise.src="./assets/exercise.svg";
+   buttonStudy.classList.add("white");
+   buttonMeditate.classList.add("white");
+   buttonExercise.classList.add("white");
+ }
