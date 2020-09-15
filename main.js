@@ -19,7 +19,10 @@ var secondsError = document.querySelector(".seconds-input-error");
 var activityError = document.querySelector(".activity-input-error");
 var startTimer = document.querySelector("h2");
 var countdownTime = document.querySelector(".time");
-var timeDisplay = document.querySelector("#start-time");
+var logActivityButton = document.querySelector(".log-activity");
+var cardDisplay = document.querySelector(".activity-cards");
+var pastActivitiesPrompt = document.querySelector(".past-activities-prompt");
+var createNewActivityButton = document.querySelector(".create-new-activity");
 var categorySelected = "";
 var savedActivities = [];
 
@@ -29,6 +32,8 @@ buttonWrap.addEventListener("click", buttonState);
 buttonWrap.addEventListener("click", setCategory);
 startButton.addEventListener("click", timerCountdown);
 activityButton.addEventListener("mouseover", timeLimits);
+logActivityButton.addEventListener("click", saveActivity);
+createNewActivityButton.addEventListener("click", displayForm);
 
 
   function buttonState(event) {
@@ -128,18 +133,17 @@ function timeLimits() {
 function displayTime() {
   if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
   if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
-  timeDisplay.innerText = `${minutesInput.value}:${secondsInput.value}`;
+  countdownTime.innerText = `${minutesInput.value}:${secondsInput.value}`;
 }
 
 function timerCountdown() {
   startButton.disabled = true;
-  timeDisplay.classList.add("hidden");
   var totalSeconds = Number((minutesInput.value) * 60) + Number(secondsInput.value);
   var interval = setInterval(countdown, 1000)
     function countdown() {
       if (totalSeconds <= -1) {
         clearInterval(interval);
-        alert("This activity is complete!");
+        timerComplete();
       } else if (totalSeconds >= 0) {
       var minute = Math.floor(totalSeconds / 60);
       var second = totalSeconds % 60;
@@ -148,6 +152,33 @@ function timerCountdown() {
       totalSeconds--;
       countdownTime.innerText = `${minute}:${second}`;
     }
+  }
+}
+
+function timerComplete() {
+  startButton.innerText="COMPLETE!";
+  logActivityButton.classList.remove("hidden");
+}
+
+function saveActivity() {
+  startButton.classList.add("hidden");
+  startTimer.classList.add("hidden");
+  countdownTime.classList.add("hidden");
+  logActivityButton.classList.add("hidden");
+  pastActivitiesPrompt.classList.add("hidden");
+  createNewActivityButton.classList.remove("hidden");
+  var activityCards = "";
+  for (var i = 0; i < savedActivities.length; i++) {
+    activityCards = 
+    `<div class="activity-card">
+    <div class="card">
+    <h5 class="card-header">${savedActivities[i].category}</h5>
+    <p class="card-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+    </div>
+    <p class="card-description">${savedActivities[i].description}</p>
+     </div>
+    `
+    cardDisplay.innerHTML = activityCards
   }
 }
 

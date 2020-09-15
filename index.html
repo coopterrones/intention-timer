@@ -11,11 +11,12 @@
     <div class="current-activity-box hidden">
       <h1 class="new-activity-header">Current Activity</h1>
       <div class="grey-box timer">
+        <button class="create-new-activity hidden">CREATE A NEW ACTIVITY</button>
         <h2 class="timer-header">Text</h2>
-        <div class="time" id="start-time"></div>
         <div class="time"><span></span>
       </div>
         <button class="start-button" value="start">START</button>
+        <button class="log-activity hidden">LOG ACTIVITY</button>
       </div>
     </div>
     <section class="new-activity">
@@ -54,6 +55,7 @@
     <section class="past-activities">
       <h1 class="past-activities-header">Past Activities</h1>
       <p class="past-activities-prompt">You haven't logged any activites yet. <br> Complete the form to the left to get started!</p>
+      <div class="activity-cards"></div>
     </section>
     <script type="text/javascript" src="activity.js"> </script>
     <script type="text/javascript" src="main.js"></script>
