@@ -277,9 +277,7 @@ main {
   color: #FFFFFF;
 }
 
-.hidden {
-  display: none;
-}
+
 
 .start-button-green {
   font-family: Montserrat;
@@ -363,4 +361,56 @@ main {
 
 .current-activity-box {
   width: 75%
+}
+
+.log-activity {
+  margin-top: 25px;
+  border-radius: 2px;
+  padding: 7px 45px;
+  color: grey;
+  outline-style: none;
+  border-style: none;
+}
+.activity-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.activity-card {
+  background-color: #46424D;
+  width: 90%;
+  height: 12%;
+  color: #FFF;
+  font-family: montserrat;
+  border-radius: 7px;
+  padding-left: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+  margin-top: 1px;
+  margin-bottom: 2px;
+  padding-top: 9px;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.card-time {
+  margin: 0;
+  margin-bottom: 8px;
+  font-weight: lighter;
+}
+
+.card-description {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+
+
+.hidden {
+  display: none;
 }
