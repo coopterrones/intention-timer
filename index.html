@@ -28,22 +28,22 @@
           <button class="meditate meditate-select"  value="meditate" id="meditate-button"><img src="./assets/meditate.svg" class="meditate-select" value="meditate" id="meditate" alt="meditate icon">Meditate</button>
           <button class="exercise exercise-select"  value="exercise" id="exercise-button"><img src="./assets/exercise.svg" class="exercise-select" value="exercise"id="exercise" alt="exercise icon">Exercise</button>
         </div>
-        <span class="activity-input-error hidden"><img class="activity-icon" src="./assets/warning.svg">  An activity is required.</span>
+        <span class="activity-input-error hidden error"><img class="activity-icon" src="./assets/warning.svg">  An activity is required.</span>
         <div class="accomplish-input">
           <p class="accomplish-question">What would you like to accomplish during this time?</p>
           <input class="input" type="text" id="accomplish">
-          <span class="accomplish-input-error hidden"><img class="accomplish-icon" src="./assets/warning.svg">  A description is required.</span>
+          <span class="accomplish-input-error hidden error"><img class="accomplish-icon" src="./assets/warning.svg">  A description is required.</span>
         </div>
         <div class="time-input">
           <div class="minutes-input">
             <p>Minutes</p>
             <input class="input" onkeyup="value=value.replace(/[^\d]/g,'')" min= "1" max="90" type="number" id="minutes" placeholder="Max value is 90 minutes">
-            <span class="minutes-input-error hidden"><img class="minutes-icon" src="./assets/warning.svg">  Minutes are required.</span>
+            <span class="minutes-input-error hidden error"><img class="minutes-icon" src="./assets/warning.svg">  Minutes are required.</span>
           </div>
           <div class="seconds-input">
             <p>Seconds</p>
             <input class="input" onkeyup="value=value.replace(/[^\d]/g,'')" min="1" max="59" type="number" id="seconds" placeholder="Max value is 59 seconds">
-            <span class="seconds-input-error hidden"><img class="seconds-icon" src="./assets/warning.svg"> Seconds are required.</span>
+            <span class="seconds-input-error hidden error"><img class="seconds-icon" src="./assets/warning.svg"> Seconds are required.</span>
           </div>
         </div>
       <div class="button-position">

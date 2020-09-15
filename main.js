@@ -24,6 +24,7 @@ var cardDisplay = document.querySelector(".activity-cards");
 var pastActivitiesPrompt = document.querySelector(".past-activities-prompt");
 var createNewActivityButton = document.querySelector(".create-new-activity");
 var inputs = document.querySelectorAll(".input");
+var errorList = document.querySelectorAll(".error");
 var indicatorColor;
 var categorySelected = "";
 var savedActivities = [];
@@ -37,8 +38,14 @@ startButton.addEventListener("click", timerCountdown);
 logActivityButton.addEventListener("click", saveActivity);
 createNewActivityButton.addEventListener("click", displayForm);
 
+function hideItem(toHide) {
+  toHide.classList.add("hidden");
+}
+function showItem(toShow) {
+  toShow.classList.remove("hidden");
+}
 
-  function buttonState(event) {
+function buttonState(event) {
   if (event.target.className.includes("study-select")) {
     buttonStudy.classList.remove("white");
     buttonMeditate.classList.add("white");
@@ -98,8 +105,8 @@ function newInstance() {
 }
 
 function removeForm() {
-  hideForm.classList.add("hidden");
-  activityTimer.classList.remove("hidden");
+  hideItem(hideForm);
+  showItem(activityTimer);
   displayTime();
 }
 
@@ -107,9 +114,9 @@ function dataValidate() {
   startButton.disabled = false;
   startButton.innerText = "START";
   createNewActivityButton.classList.add("hidden");
-  startButton.classList.remove("hidden");
-  startTimer.classList.remove("hidden");
-  countdownTime.classList.remove("hidden");
+    showItem(startButton);
+    showItem(startTimer);
+    showItem(countdownTime);
   if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
     removeForm();
     newInstance();
@@ -143,7 +150,7 @@ function timeLimits() {
 }
 
 function displayTime() {
-  activityTimer.classList.remove("hidden");
+  showItem(activityTimer);
   if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
   if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
   countdownTime.innerText = `${minutesInput.value}:${secondsInput.value}`;
@@ -170,16 +177,17 @@ function timerCountdown() {
 
 function timerComplete() {
   startButton.innerText="COMPLETE!";
-  logActivityButton.classList.remove("hidden");
+  showItem(logActivityButton);
 }
 
 function saveActivity() {
-  startButton.classList.add("hidden");
-  startTimer.classList.add("hidden");
-  countdownTime.classList.add("hidden");
-  logActivityButton.classList.add("hidden");
-  pastActivitiesPrompt.classList.add("hidden");
-  createNewActivityButton.classList.remove("hidden");
+  hideItem(startButton);
+  hideItem(startTimer);
+  hideItem(countdownTime);
+  hideItem(logActivityButton);
+  hideItem(pastActivitiesPrompt);
+  showItem(createNewActivityButton);
+  
   var activityCards = "";
   for (var i = 0; i < savedActivities.length; i++) {
     activityCards =
@@ -198,12 +206,20 @@ function saveActivity() {
   }
   cardDisplay.insertAdjacentHTML("afterend", activityCards);
 }
+
  function displayForm() {
-   hideForm.classList.remove("hidden");
-   activityTimer.classList.add("hidden")
-   clearInputs()
-   clearButtons()
+   showItem(hideForm);
+   hideItem(activityTimer);
+   clearInputs();
+   clearButtons();
+   clearErrors();
  }
+ 
+ function clearErrors() {
+   for (var i = 0; i < errorList.length; i++) {
+     errorList[i].classList.add("hidden");
+ }
+}
 
  function clearInputs() {
    for (var i = 0; i < inputs.length; i++) {
