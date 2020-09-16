@@ -29,7 +29,7 @@ var indicatorColor;
 var categorySelected = "";
 var savedActivities = [];
 
-
+window.onload = showCards;
 activityButton.addEventListener('click', dataValidate);
 activityButton.addEventListener("mouseover", timeLimits);
 buttonWrap.addEventListener("click", buttonState);
@@ -124,17 +124,17 @@ function dataValidate() {
   } else {
     for( var i = 0; i < inputFields.length; i++) {
       if (inputFields[0].value.length === 0) {
-        accomplishError.classList.remove("hidden");
+        showItem(accomplishError);
       }
       if (inputFields[1].value.length === 0) {
-        minutesError.classList.remove("hidden");
+        showItem(minutesError);
       }
       if(inputFields[2].value.length === 0) {
-        secondsError.classList.remove("hidden");
+        showItem(secondsError);
       }
     }
     if(!categorySelected) {
-      activityError.classList.remove("hidden");
+      showItem(activityError);
     }
   }
 }
@@ -205,6 +205,7 @@ function saveActivity() {
     `
   }
   cardDisplay.insertAdjacentHTML("afterend", activityCards);
+  storePastActivities();
 }
 
  function displayForm() {
@@ -217,7 +218,7 @@ function saveActivity() {
  
  function clearErrors() {
    for (var i = 0; i < errorList.length; i++) {
-     errorList[i].classList.add("hidden");
+     hideItem(errorList[i]);
  }
 }
 
@@ -235,3 +236,44 @@ function saveActivity() {
    buttonMeditate.classList.add("white");
    buttonExercise.classList.add("white");
  }
+ 
+ function storePastActivities() {
+   var stringifiedActivities = JSON.stringify(savedActivities);
+   var saveLocal = localStorage.setItem("cards", stringifiedActivities);
+ }
+ 
+ function showCards() {
+   var getLocal = localStorage.getItem("cards");
+   var parseIt = JSON.parse(getLocal);
+   if (parseIt.length > 0) {
+     hideItem(pastActivitiesPrompt);
+   }
+   var oldCards = '';
+   var addOldCard;
+   for (var i = 0; i < parseIt.length; i++) {
+     addOldCard = 
+     `<div class="activity-card">
+     <div class="card">
+     <div>
+     <h5 class="card-header">${parseIt[i].category}</h5>
+     <p class="card-time">${parseIt[i].minutes} MIN ${parseIt[i].seconds} SECONDS</p>
+     <p class="card-description">${parseIt[i].description}</p>
+     </div>
+     <div class="color-indicator" style= "background-color: ${parseIt[i].color}">
+     </div>
+     </div>
+      </div>
+     `
+     oldCards += addOldCard;
+
+   }
+   cardDisplay.insertAdjacentHTML("afterend", oldCards);
+ }
+ //ddisplay cards
+ 
+ 
+ 
+ 
+ 
+ 
+ 
