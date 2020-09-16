@@ -41,34 +41,47 @@ createNewActivityButton.addEventListener("click", displayForm);
 function hideItem(toHide) {
   toHide.classList.add("hidden");
 }
+
 function showItem(toShow) {
   toShow.classList.remove("hidden");
 }
 
+function addWhite(button) {
+  button.classList.add("white");
+}
+
+function removeWhite(button) {
+  button.classList.remove("white");
+}
+
+function addColor(item, color) {
+  item.classList.add(color);
+}
+
 function buttonState(event) {
   if (event.target.className.includes("study-select")) {
-    buttonStudy.classList.remove("white");
-    buttonMeditate.classList.add("white");
-    buttonExercise.classList.add("white");
+    removeWhite(buttonStudy);
+    addWhite(buttonMeditate);
+    addWhite(buttonExercise);
+    addColor(buttonStudy, "study-color");
     iconMeditate.src="./assets/meditate.svg";
     iconExercise.src="./assets/exercise.svg";
-    buttonStudy.classList.add("study-color");
     iconStudy.src="./assets/study-active.svg";
   }
   else if (event.target.className.includes("meditate-select")) {
-    buttonMeditate.classList.remove("white");
-    buttonStudy.classList.add("white");
-    buttonExercise.classList.add("white");
+    removeWhite(buttonMeditate);
+    addWhite(buttonStudy);
+    addWhite(buttonExercise);
+    addColor(buttonMeditate, "meditate-color");
     iconStudy.src="./assets/study.svg";
     iconExercise.src="./assets/exercise.svg";
-    buttonMeditate.classList.add("meditate-color");
     iconMeditate.src="./assets/meditate-active.svg";
   }
   else if (event.target.className.includes("exercise-select")) {
-    buttonExercise.classList.remove("white");
-    buttonExercise.classList.add("exercise-color");
-    buttonMeditate.classList.add("white");
-    buttonStudy.classList.add("white");
+    removeWhite(buttonExercise);
+    addWhite(buttonMeditate);
+    addWhite(buttonStudy);
+    addColor(buttonExercise, "exercise-color");
     iconStudy.src="./assets/study.svg";
     iconExercise.src="./assets/exercise-active.svg";
     iconMeditate.src="./assets/meditate.svg";
@@ -79,15 +92,15 @@ function setCategory(event) {
   if (event.target.className.includes("study-select") || event.target.id === "study") {
     indicatorColor = "#B3FD78"
     categorySelected = "Study"
-    startButton.classList.add("start-button-green")
+    startButton.classList.add("start-button-green");
   } else if (event.target.className.includes("meditate-select") || event.target.id === "meditate") {
     indicatorColor = "#C278FD"
     categorySelected = "Meditate"
-    startButton.classList.add("start-button-purple")
+    startButton.classList.add("start-button-purple");
   } else if (event.target.className.includes("exercise-select") || event.target.id === "exercise") {
     indicatorColor = "#FD8078"
     categorySelected = "Exercise"
-    startButton.classList.add("start-button-red")
+    startButton.classList.add("start-button-red");
   }
 }
 
@@ -113,30 +126,30 @@ function removeForm() {
 function dataValidate() {
   startButton.disabled = false;
   startButton.innerText = "START";
-  createNewActivityButton.classList.add("hidden");
-    showItem(startButton);
-    showItem(startTimer);
-    showItem(countdownTime);
+  hideItem(createNewActivityButton);
+  showItem(startButton);
+  showItem(startTimer);
+  showItem(countdownTime);
   if (categorySelected && accomplishInput.value.length > 0 && minutesInput.value.length > 0 && secondsInput.value.length > 0) {
     removeForm();
     newInstance();
     startTimer.innerText = accomplishInput.value;
   } else {
-    for( var i = 0; i < inputFields.length; i++) {
-      if (inputFields[0].value.length === 0) {
-        showItem(accomplishError);
-      }
-      if (inputFields[1].value.length === 0) {
-        showItem(minutesError);
-      }
-      if(inputFields[2].value.length === 0) {
-        showItem(secondsError);
-      }
-    }
-    if(!categorySelected) {
+    if (!categorySelected) {
       showItem(activityError);
     }
-  }
+      for( var i = 0; i < inputFields.length; i++) {
+        if (inputFields[0].value.length === 0) {
+          showItem(accomplishError);
+        }
+        if (inputFields[1].value.length === 0) {
+          showItem(minutesError);
+        }
+        if(inputFields[2].value.length === 0) {
+          showItem(secondsError);
+        }
+      }
+    }
 }
 
 function timeLimits() {
@@ -151,9 +164,11 @@ function timeLimits() {
 
 function displayTime() {
   showItem(activityTimer);
-  if (minutesInput.value < 10) {minutesInput.value = `0${minutesInput.value}`};
-  if (secondsInput.value < 10) {secondsInput.value = `0${secondsInput.value}`};
-  countdownTime.innerText = `${minutesInput.value}:${secondsInput.value}`;
+  var minute = minutesInput.value;
+  var second = secondsInput.value;
+  if (minute < 10) {minute = `0${minute}`};
+  if (second < 10) {second = `0${second}`};
+  countdownTime.innerText = `${minute}:${second}`;
 }
 
 function timerCountdown() {
@@ -232,9 +247,9 @@ function saveActivity() {
    iconStudy.src="./assets/study.svg";
    iconMeditate.src="./assets/meditate.svg";
    iconExercise.src="./assets/exercise.svg";
-   buttonStudy.classList.add("white");
-   buttonMeditate.classList.add("white");
-   buttonExercise.classList.add("white");
+   addWhite(buttonStudy);
+   addWhite(buttonMeditate);
+   addWhite(buttonExercise);
  }
  
  function storePastActivities() {
@@ -255,7 +270,7 @@ function saveActivity() {
      `<div class="activity-card">
      <div class="card">
      <div>
-     <h5 class="card-header">${parseIt[i].category}</h5>
+     <h5 class="card-header"><strong>${parseIt[i].category}</strong></h5>
      <p class="card-time">${parseIt[i].minutes} MIN ${parseIt[i].seconds} SECONDS</p>
      <p class="card-description">${parseIt[i].description}</p>
      </div>
@@ -265,15 +280,6 @@ function saveActivity() {
       </div>
      `
      oldCards += addOldCard;
-
    }
    cardDisplay.insertAdjacentHTML("afterend", oldCards);
  }
- //ddisplay cards
- 
- 
- 
- 
- 
- 
- 
