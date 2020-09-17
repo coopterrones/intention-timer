@@ -33,11 +33,11 @@ None. This project was developed on macOS Catalina 10.15.6 and tested in Chrome 
 ![Intention Timer Stage 3](https://media.giphy.com/media/KYnuQWSF2381p4SOQG/giphy.gif  "Intention Timer Stage 3")
 
 
-
 ![Intention Timer Stage 3](https://media.giphy.com/media/9HvtKvdf3Nm4kHfBpl/giphy.gif  "Intention Timer Stage 3")
 
   
--   If the  **Start Activity**  button is clicked before the user has entered information into all four inputs, the user will receive an error message, but will not lose any information that was provided.
+- If the  **Start Activity**  button is clicked before the user has entered information into all four inputs, the user will receive an error message, but will not lose any information that was provided.
+
 ![Intention Timer Stage4](https://media.giphy.com/media/JGoscarXoopic5syJK/giphy.gif  "Intention Timer Stage 4")
 
 
