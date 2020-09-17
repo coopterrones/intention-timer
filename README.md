@@ -11,8 +11,8 @@ None. This project was developed on macOS Catalina 10.15.6 and tested in Chrome 
 
 
 ## Visuals
+![Intention Timer Initial Stage](https://media.giphy.com/media/r16R0tGwAhP7WJzlsw/giphy.gif "Intention Timer Initial Stage")
 
-<iframe src="https://giphy.com/embed/r16R0tGwAhP7WJzlsw" width="480" height="272" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/r16R0tGwAhP7WJzlsw">via GIPHY</a></p>
 
 
 - When an activity category  **(Exercise,  Meditate, or  Study)** is clicked on the associated border and icon will change colors to give a visual indication that it has been selected.
@@ -21,7 +21,7 @@ None. This project was developed on macOS Catalina 10.15.6 and tested in Chrome 
 
 -   When the  **Start Activity**  button is clicked, the user will no longer see the form, and instead see a timer clock. The timer clock will display the user-provided minutes and seconds, as well as the description. The category will not appear, but the outline of the circle will match the color associated with the category.
 
-<iframe src="https://giphy.com/embed/i81SPVUrcdgBtONG7S" width="480" height="272" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/i81SPVUrcdgBtONG7S">via GIPHY</a></p>
+![Intention Timer Stage 2](https://media.giphy.com/media/i81SPVUrcdgBtONG7S/giphy.gif "Intention Timer Initial Stage")
 
 -   The user can start the time by clicking  **Start**.
 -   While timer is running, the user will see it count down by second.
@@ -30,24 +30,20 @@ None. This project was developed on macOS Catalina 10.15.6 and tested in Chrome 
 
 - When the user acknowledges the message and completion of the activity by clicking **Log Activity**, a card with the **category**, **time**, and the users input for **What would you like to accomplish during this time?** will appear on the card. The card will also have a small color-coded visual indicator of the category.
 
-<iframe src="https://giphy.com/embed/KYnuQWSF2381p4SOQG" width="480" height="272" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/KYnuQWSF2381p4SOQG">via GIPHY</a></p>
+![Intention Timer Stage 3](https://media.giphy.com/media/KYnuQWSF2381p4SOQG/giphy.gif  "Intention Timer Stage 3")
 
 
 
+![Intention Timer Stage 3](https://media.giphy.com/media/9HvtKvdf3Nm4kHfBpl/giphy.gif  "Intention Timer Stage 3")
 
-<iframe src="https://giphy.com/embed/9HvtKvdf3Nm4kHfBpl" width="480" height="272" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/9HvtKvdf3Nm4kHfBpl">via GIPHY</a></p>
-
+  
 -   If the  **Start Activity**  button is clicked before the user has entered information into all four inputs, the user will receive an error message, but will not lose any information that was provided.
+![Intention Timer Stage4](https://media.giphy.com/media/JGoscarXoopic5syJK/giphy.gif  "Intention Timer Stage 4")
 
-<iframe src="https://giphy.com/embed/mSMoMLfIxuXw4P61Uy" width="480" height="272" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mSMoMLfIxuXw4P61Uy">via GIPHY</a></p>
 
-
+![Intention Timer Stage5](https://media.giphy.com/media/mSMoMLfIxuXw4P61Uy/giphy.gif  "Intention Timer Stage 5")
 
 - When the user refreshes the page, their past activities are still displayed.
-
-
-
-
 
 
 
