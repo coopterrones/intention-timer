@@ -69,9 +69,12 @@ None. This project was developed on macOS Catalina 10.15.6 and tested in Chrome 
 👤 **Amanda Davidson, Cooper Terrones & Ben Prat**
 
 * Github:
+ 
 @ADavidson02, https://github.com/ADavidson02
- @coopterrones, https://github.com/coopterrones
- @benjaminprat, https://github.com/benjaminprat
+ 
+@coopterrones, https://github.com/coopterrones
+ 
+@benjaminprat, https://github.com/benjaminprat
 
 
 ### ✨ [GitHub Pages, live site](https://coopterrones.github.io/Intention-Timer/)
